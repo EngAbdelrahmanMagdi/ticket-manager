@@ -7,6 +7,8 @@ A simple task management app with hardcoded data. Shows tasks with different sta
 
 ### Popup Modal
 ![Popup Modal](frontend/public/images/popup-desktop-view.png)
+### No Tasks
+![Desktop No Tasks](frontend/public/images/desktop-view-no-tasks.png)
 
 ## iPad View
 ![iPad View](frontend/public/images/ipad-view.png)
@@ -16,6 +18,8 @@ A simple task management app with hardcoded data. Shows tasks with different sta
 
 ### Mobile Popup Modal
 ![Mobile Popup Modal](frontend/public/images/popup-mobile-view.png)
+### Mobile No Tasks
+![Mobile No Tasks](frontend/public/images/mobile-view-no-tasks.png)
 
 ## How to Install
 
@@ -74,6 +78,7 @@ npm run dev
 - Responsive design works on desktop, tablet, and phone
 - Uses Tailwind CSS for styling
 - Has translations support
+- Shows empty state when no tasks exist
 
 ## Project Structure
 
