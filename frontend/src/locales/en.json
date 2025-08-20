@@ -6,5 +6,7 @@
   "taskCompleted": "Task completed successfully",
   "taskInProgress": "Task is currently being worked on",
   "taskPending": "Task is pending and ready to start",
-  "close": "Close"
+  "close": "Close",
+  "noTasksTitle": "No tasks found",
+  "noTasksMessage": "Looks like you don't have any tasks yet"
 }
