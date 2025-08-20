@@ -1,4 +1,10 @@
 {
   "title": "Task Manager",
-  "subtitle": "Organize your development tasks and track progress efficiently"
+  "subtitle": "Organize your development tasks and track progress efficiently",
+  "description": "Description",
+  "progress": "Progress",
+  "taskCompleted": "Task completed successfully",
+  "taskInProgress": "Task is currently being worked on",
+  "taskPending": "Task is pending and ready to start",
+  "close": "Close"
 }

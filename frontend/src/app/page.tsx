@@ -1,10 +1,7 @@
-import { getTasks } from "@/services/taskService"
-import TaskCard from "@/components/TaskCard"
-import { Task } from "@/types/task"
+import TaskList from "@/components/TaskList"
 import { useTranslations } from "@/hooks/useTranslations"
 
 export default async function Home() {
-  const tasks: Task[] = await getTasks()
   const { translate } = useTranslations()
 
   return (
@@ -19,11 +16,7 @@ export default async function Home() {
           </p>
         </div>
         
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {tasks.map(task => (
-            <TaskCard key={task.id} task={task} />
-          ))}
-        </div>
+            <TaskList />
       </div>
     </main>
   )

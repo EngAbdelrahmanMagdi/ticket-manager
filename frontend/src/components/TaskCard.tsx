@@ -1,19 +1,10 @@
+import { getStatusColor} from '@/utils/taskUtils'
 import { TaskCardProps } from '@/types/task'
 
-export default function TaskCard({ task }: TaskCardProps) {
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'Done':
-        return 'bg-emerald-50 text-emerald-700 border-emerald-200'
-      case 'In Progress':
-        return 'bg-blue-50 text-blue-700 border-blue-200'
-      default:
-        return 'bg-amber-50 text-amber-700 border-amber-200'
-    }
-  }
 
+export default function TaskCard({ task, onClick }: TaskCardProps) {
   return (
-    <div className="group bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-xl hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full">
+    <div className="group bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-xl hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full cursor-pointer"onClick={() => onClick?.(task)}>
       <div className="p-6 flex-1">
         <div className="flex justify-between items-start mb-4">
           <h3 className="text-xl font-semibold text-gray-900 leading-tight pr-3">
@@ -23,7 +14,7 @@ export default function TaskCard({ task }: TaskCardProps) {
             {task.status}
           </span>
         </div>
-        <p className="text-gray-600 text-sm leading-relaxed">
+        <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 group-hover:text-gray-800 transition-colors">
           {task.description}
         </p>
       </div>

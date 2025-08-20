@@ -7,4 +7,12 @@ export interface Task {
 
 export interface TaskCardProps {
   task: Task
+  onClick?: (task: Task) => void
+}
+
+
+export interface TaskModalProps {
+  task: Task | null
+  isOpen: boolean
+  onClose: () => void
 }
