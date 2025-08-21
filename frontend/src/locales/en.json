@@ -8,5 +8,19 @@
   "taskPending": "Task is pending and ready to start",
   "close": "Close",
   "noTasksTitle": "No tasks found",
-  "noTasksMessage": "Looks like you don't have any tasks yet"
+  "noTasksMessage": "Looks like you don't have any tasks yet",
+  "loading": "Loading tasks...",
+  "createTask": "Create Task",
+  "createTaskTitle": "Create New Task",
+  "titleLabel": "Title",
+  "statusLabel": "Status",
+  "submit": "Create Task",
+  "cancel": "Cancel",
+  "titlePlaceholder": "Enter task title",
+  "descriptionPlaceholder": "Enter task description",
+  "selectStatus": "Select status",
+  "pending": "Pending",
+  "inProgress": "In Progress",
+  "done": "Done",
+  "taskCreatedSuccess": "Task created successfully"
 }
