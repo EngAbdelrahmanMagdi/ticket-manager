@@ -1,12 +1,14 @@
 # Task Manager
-## Hardcoded Tasks API
-A simple task management app with hardcoded data. Shows tasks with different statuses and opens modal when you click on cards.
+## RethinkDB Database API
+A simple task management app with RethinkDB database. Shows tasks with different statuses and opens modal when you click on cards. Now supports creating new tasks by API.
 
 ## Desktop View
-![Desktop View](frontend/public/images/desktop-view.png)
+![Desktop View](frontend/public/images/desktop-view-with-create.png)
 
 ### Popup Modal
 ![Popup Modal](frontend/public/images/popup-desktop-view.png)
+### Create Task
+![Popup Modal](frontend/public/images/desktop-create-task.png)
 ### No Tasks
 ![Desktop No Tasks](frontend/public/images/desktop-view-no-tasks.png)
 
@@ -23,32 +25,94 @@ A simple task management app with hardcoded data. Shows tasks with different sta
 
 ## How to Install
 
-### Backend (Laravel)
+### Backend (Laravel and RethinkDB)
 
-1. Go to backend folder:
+1. Choose how to run RethinkDB
+
+**A: Docker (Easy)**
+```bash
+docker run -d -P --name rethink1 rethinkdb
+```
+This downloads and starts RethinkDB in a container. Check the port it uses:
+```bash
+docker port rethink1
+```
+
+**B: Install directly on your machine**
+- **Windows**: Download from https://rethinkdb.com/docs/install/windows/
+- **Mac**: `brew install rethinkdb`
+- **Linux**: `sudo apt-get install rethinkdb` or download from website
+
+2. Start RethinkDB server
+
+**If using Docker (A):**
+RethinkDB is already running
+
+**If installed directly (B):**
+```bash
+rethinkdb
+```
+This starts server on port 28015
+
+3. Go to backend folder:
 ```bash
 cd backend
 ```
 
-2. Install PHP dependencies:
+4. Install PHP dependencies:
 ```bash
 composer install
 ```
 
-3. Copy environment file:
+5. Copy environment file:
 ```bash
 cp .env.example .env
 ```
 
-4. Generate app key:
+6. Add RethinkDB settings to .env file
+Add these lines to your .env file:
+
+**If using Docker (A):**
+```env
+RETHINKDB_HOST=localhost
+RETHINKDB_PORT=32768
+RETHINKDB_DATABASE=taskmanager
+RETHINKDB_USERNAME=
+RETHINKDB_PASSWORD=
+```
+
+**If installed directly (B):**
+```env
+RETHINKDB_HOST=localhost
+RETHINKDB_PORT=28015
+RETHINKDB_DATABASE=taskmanager
+RETHINKDB_USERNAME=
+RETHINKDB_PASSWORD=
+```
+
+7. Generate app key:
 ```bash
 php artisan key:generate
 ```
 
-5. Start server:
+#### Step 8: Seed initial tasks
+```bash
+php artisan rethinkdb:seed
+```
+
+#### Step 9: Start server
 ```bash
 php artisan serve
 ```
+
+**Note**: If you get port error, change RETHINKDB_PORT in .env to different port like 28016
+
+#### Troubleshooting:
+- **Check if container is running**: `docker ps`
+- **Check the port mapping**: `docker port rethink1`
+- **Restart container**: `docker restart rethink1`
+- **View container logs**: `docker logs rethink1`
+- **Access RethinkDB admin**: Open `http://localhost:32768` in your browser
 
 ### Frontend (Next.js)
 1. Go to frontend folder:
@@ -79,6 +143,15 @@ npm run dev
 - Uses Tailwind CSS for styling
 - Has translations support
 - Shows empty state when no tasks exist
+- RethinkDB database backend
+
+## Why I Chose Custom Artisan Command
+
+I chose to use a custom Artisan command (`php artisan rethinkdb:seed`)
+
+The custom command approach is good because the data is not mixed with the main API logic. Anyone can run `php artisan rethinkdb:seed` to quickly get sample tasks, and the system automatically creates the database and table if they don't exist.
+
+This approach still has the data hardcoded in the command file. When you want to change the sample data, you still need to edit the command code. This is not as flexible as true database seeding where data comes from external sources. But for a small project like this, it's a reasonable that keeps the main code clean while providing easy setup.
 
 ## Project Structure
 
@@ -91,5 +164,5 @@ Palm2/
 
 ## Technologies Used
 
-- **Backend**: Laravel, PHP
+- **Backend**: Laravel, PHP, RethinkDB
 - **Frontend**: Next.js, React, TypeScript, Tailwind CSS

@@ -1,0 +1,5 @@
+I chose to use a custom Artisan command (`php artisan rethinkdb:seed`)
+
+The custom command approach is good because the data is not mixed with the main API logic. Anyone can run `php artisan rethinkdb:seed` to quickly get sample tasks, and the system automatically creates the database and table if they don't exist.
+
+This approach still has the data hardcoded in the command file. When you want to change the sample data, you still need to edit the command code. This is not as flexible as true database seeding where data comes from external sources. But for a small project like this, it's a reasonable that keeps the main code clean while providing easy setup.
