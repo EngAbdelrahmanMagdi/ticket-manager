@@ -23,6 +23,14 @@ A simple task management app with RethinkDB database. Shows tasks with different
 ### Mobile No Tasks
 ![Mobile No Tasks](frontend/public/images/mobile-view-no-tasks.png)
 
+## Switch to Correct Branch
+
+Make sure you're on the `db-backed-tasks-api` branch:
+
+```bash
+git checkout -b db-backed-tasks-api origin/db-backed-tasks-api
+```
+
 ## How to Install
 
 ### Backend (Laravel and RethinkDB)
