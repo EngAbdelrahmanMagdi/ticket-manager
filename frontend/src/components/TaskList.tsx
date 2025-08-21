@@ -99,7 +99,7 @@ export default function TaskList() {
   return (
     <>
       <div className="mb-6 text-center sm:text-left">
-        <div className="inline-flex flex-col sm:flex-row sm:items-center sm:justify-end w-full">
+        <div className="flex justify-end">
           <button
             onClick={handleCreateTask}
             className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-500/30 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 cursor-pointer">
